@@ -1,0 +1,111 @@
+summon falling_block ~%x0% ~.1 ~%z0% {
+	BlockState:{Name:redstone_block},
+	Time:1,
+	Passengers:[
+		{
+			id:falling_block,
+			BlockState:{Name:activator_rail},
+			Time:1,
+			Passengers:[
+				%pass11%gamerule commandBlockOutput false"
+				},
+				%pass11%scoreboard objectives add %value% dummy"
+				},
+				%pass11%data merge block ~%x1% ~ ~%z1% {
+						Text1:\"{
+							\\\"text\\\":\\\"%line1:\=\\\\%\\\",
+							\\\"clickEvent\\\":{
+								\\\"action\\\":\\\"run_command\\\",
+								\\\"value\\\":\\\"execute at @e[tag=%value%,scores={%value%=1..1}] run data merge block ~%x2% ~1 ~%z2% {
+									Text3:\\\\\\\"{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%,scores={%value%=1..1}] %value% 0\\\\\\\\\\\\\\\"
+										}
+									}\\\\\\\",
+									Text4:\\\\\\\"[
+										{
+											\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false,
+											\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+												\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+												\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute at @e[tag=%value%] run setblock ~ ~1 ~ stone\\\\\\\\\\\\\\\"
+											}
+										},
+										{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+										{
+											\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true
+										}
+									]\\\\\\\"
+								}\\\"
+							}
+						}\",
+						Text2:\"{
+							\\\"text\\\":\\\"%line2:\=\\\\%\\\",
+							\\\"clickEvent\\\":{
+								\\\"action\\\":\\\"run_command\\\",
+								\\\"value\\\":\\\"execute at @e[tag=%value%,scores={%value%=0..0}] run data merge block ~%x2% ~1 ~%z2% {
+									Text3:\\\\\\\"{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%,scores={%value%=0..0}] %value% 1\\\\\\\\\\\\\\\"
+										}
+									}\\\\\\\",
+									Text4:\\\\\\\"[
+										{
+											\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true,
+											\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+												\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+												\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute at @e[tag=%value%] run setblock ~ ~1 ~ redstone_block\\\\\\\\\\\\\\\"
+											}
+										},
+										{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+										{
+											\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false
+										}
+									]\\\\\\\"
+								}\\\"
+							}
+						}\",
+					Text4:\"[
+						{
+							\\\"text\\\":\\\"[ON]\\\",
+							\\\"color\\\":\\\"green\\\",
+							\\\"bold\\\":false
+						},
+						{\\\"text\\\":\\\"       \\\"},
+						{
+							\\\"text\\\":\\\"[OFF]\\\",
+							\\\"color\\\":\\\"red\\\",
+							\\\"bold\\\":true
+						}
+					]\"
+					}"
+				},
+				%pass11%summon armor_stand ~%x3% ~-1 ~%z3% {Marker:1,NoGravity:1,Tags:[%value%]}"
+				},
+				%pass11%setblock ~%x4% ~ ~%z4% minecraft:redstone_lamp"
+				},
+				%pass11%scoreboard players set @e[tag=%value%] %value% 0"
+				},
+				%pass11%summon falling_block ~%x0% ~ ~%z0% {
+						BlockState:{Name:command_block},Time:1,TileEntityData:{
+							Command:\"fill ~ ~ ~ ~%x1% ~1 ~%z1% minecraft:air\",auto:1
+						}
+					}"
+				},
+				%pass11%kill @e[tag=%value%,r=1]"
+				}
+			]
+		}
+	]
+}

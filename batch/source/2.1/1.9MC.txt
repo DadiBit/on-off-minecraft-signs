@@ -1,0 +1,133 @@
+summon FallingSand ~!x0! ~ ~!z0! {
+	TileID:210,
+	Time:1,
+	Passengers:[
+		{
+			id:FallingSand,
+			TileID:152,
+			Time:1,
+			Passengers:[
+				{
+					id:FallingSand,
+					TileID:157,
+					Time:1,
+					Passengers:[
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"gamerule commandBlockOutput false"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"scoreboard objectives add !value! dummy"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"blockdata ~!x1! ~-1 ~!z1! {
+								Text1:\"{
+									\\\"text\\\":\\\"!ln1:\=\\\\!\\\",
+									\\\"clickEvent\\\":{
+										\\\"action\\\":\\\"run_command\\\",
+										\\\"value\\\":\\\"execute @e[tag=!value!,score_!value!=1] ~ ~ ~ execute @e[tag=!value!S] ~ ~ ~ blockdata ~ ~ ~ {
+											Text3:\\\\\\\"{
+												\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"!ln3:\=\\\\\\\\\\\\\\\!\\\\\\\\\\\\\\\",
+												\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+													\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=!value!] !value! 0\\\\\\\\\\\\\\\"
+												}
+											}\\\\\\\",
+											Text4:\\\\\\\"[
+												{
+													\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false,
+													\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+														\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+														\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[tag=!value!] ~ ~ ~ setblock ~ ~1 ~ stone\\\\\\\\\\\\\\\"
+													}
+												},
+												{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+												{
+													\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true
+												}
+											]\\\\\\\"
+										}\\\"
+									}
+								}\",
+								Text2:\"{
+									\\\"text\\\":\\\"!ln2:\=\\\\!\\\",
+									\\\"clickEvent\\\":{
+										\\\"action\\\":\\\"run_command\\\",
+										\\\"value\\\":\\\"execute @e[tag=!value!,score_!value!=0] ~ ~ ~ execute @e[tag=!value!S] ~ ~ ~ blockdata ~ ~ ~ {
+											Text3:\\\\\\\"{
+												\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"!ln3:\=\\\\\\\\\\\\\\\!\\\\\\\\\\\\\\\",
+												\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+													\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=!value!] !value! 1\\\\\\\\\\\\\\\"
+												}
+											}\\\\\\\",
+											Text4:\\\\\\\"[
+												{
+													\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true,
+													\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+														\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+														\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[tag=!value!] ~ ~ ~ setblock ~ ~1 ~ redstone_block\\\\\\\\\\\\\\\"
+													}
+												},
+												{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+												{
+													\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+													\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false
+												}
+											]\\\\\\\"
+										}\\\"
+									}
+								}\",
+								Text3:\"{
+									\\\"text\\\":\\\"!ln3:\=\\\\!\\\"
+								}\",
+								Text4:\"[
+									{
+										\\\"text\\\":\\\"[ON]\\\",
+										\\\"color\\\":\\\"green\\\",
+										\\\"bold\\\":false
+									},
+									{\\\"text\\\":\\\"       \\\"},
+									{
+										\\\"text\\\":\\\"[OFF]\\\",
+										\\\"color\\\":\\\"red\\\",
+										\\\"bold\\\":true
+									}
+								]\"
+							}"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"summon ArmorStand ~!x2! ~-2 ~!z2! {Marker:1,NoGravity:1,Tags:[!value!]}"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"summon ArmorStand ~!x1! ~-1 ~!z1! {Marker:1,NoGravity:1,Tags:[!value!S],Invisible:1}"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"setblock ~!x3! ~-1 ~!z3! minecraft:redstone_lamp"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"tellraw @a [{\"text\":\"\",\"color\":\"gold\",\"bold\":true},{\"text\":\"ON\",\"color\":\"green\",\"bold\":true},{\"text\":\" - \"},{\"text\":\"OFF\",\"color\":\"red\",\"bold\":true},{\"text\":\" signs for vanilla Minecraft !version!\",\"color\":\"gold\",\"bold\":true},{\"text\":\"\\n Generated by the \\\"ON-OFF signs generator 2.0\\\"\\n Get downloads and video tutorial on this \",\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"link\",\"bold\":false,\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://www.youtube.com\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"https://www.youtube.com\"}},{\"text\":\"\\n For help/infos and more: \",\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"\\u25BA\\u25BA\\u25BA dadib.official@gmail.com \\u25C4\\u25C4\\u25C4\",\"bold\":false}]"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"scoreboard players set @e[tag=!value!] !value! 0"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"blockdata ~ ~-2 ~ {
+								Command:\"fill ~ ~ ~ ~ ~2 ~ air\"
+							}"
+						},
+						{
+							id:MinecartCommandBlock,Tags:[!value!],Command:"kill @e[tag=!value!,r=1]"
+						}
+					]
+				}
+			]
+		}
+	]
+}

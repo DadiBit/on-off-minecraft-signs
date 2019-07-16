@@ -1,0 +1,148 @@
+summon falling_block ~!x0! ~.1 ~!z0! {
+	BlockState:{Name:repeating_command_block},
+	Time:1,
+	Passengers:[
+		{
+			id:falling_block,
+			BlockState:{Name:stone},
+			Time:-1,
+			Passengers:[
+				{
+					id:falling_block,
+					BlockState:{Name:redstone_block},
+					Time:1,
+					Passengers:[
+						{
+							id:falling_block,
+							BlockState:{Name:stone},
+							Time:-1,
+							Passengers:[
+								{
+									id:falling_block,
+									BlockState:{Name:activator_rail},
+									Time:1,
+									Passengers:[
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"gamerule commandBlockOutput false"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"scoreboard objectives add %value% dummy"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"data merge block ~!x1! ~-1 ~!z1! {
+												Text1:\"{
+													\\\"text\\\":\\\"%ln1:\=\\\\%\\\",
+													\\\"clickEvent\\\":{
+														\\\"action\\\":\\\"run_command\\\",
+														\\\"value\\\":\\\"execute at @e[tag=%value%,scores={%value%=1..1}] at @e[tag=%value%S] run data merge block ~ ~ ~ {
+															Text3:\\\\\\\"{
+																\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+																\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+																	\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%] %value% 0\\\\\\\\\\\\\\\"
+																}
+															}\\\\\\\",
+															Text4:\\\\\\\"[
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false,
+																	\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+																		\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+																		\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute at @e[tag=%value%] run setblock ~ ~1 ~ stone\\\\\\\\\\\\\\\"
+																	}
+																},
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"      \\\\\\\\\\\\\\\"
+																},
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true
+																}
+															]\\\\\\\"
+														}\\\"
+													}
+												}\",
+												Text2:\"{
+													\\\"text\\\":\\\"%ln2:\=\\\\%\\\",
+													\\\"clickEvent\\\":{
+														\\\"action\\\":\\\"run_command\\\",
+														\\\"value\\\":\\\"execute at @e[tag=%value%,scores={%value%=0..0}] at @e[tag=%value%S] run data merge block ~ ~ ~ {
+															Text3:\\\\\\\"{
+																\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+																\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+																	\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%] %value% 1\\\\\\\\\\\\\\\"
+																}
+															}\\\\\\\",
+															Text4:\\\\\\\"[
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true,
+																	\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+																		\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+																		\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute at @e[tag=%value%] run setblock ~ ~1 ~ redstone_block\\\\\\\\\\\\\\\"
+																	}
+																},
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"      \\\\\\\\\\\\\\\"
+																},
+																{
+																	\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+																	\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false
+																}
+															]\\\\\\\"
+														}\\\"
+													}
+												}\",
+											Text4:\"[
+												{
+													\\\"text\\\":\\\"[ON]\\\",
+													\\\"color\\\":\\\"green\\\",
+													\\\"bold\\\":false
+												},
+												{\\\"text\\\":\\\"      \\\"},
+												{
+													\\\"text\\\":\\\"[OFF]\\\",
+													\\\"color\\\":\\\"red\\\",
+													\\\"bold\\\":true
+												}
+											]\"
+											}"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"summon armor_stand ~!x2! ~-2 ~!z2! {Marker:1,NoGravity:1,Tags:[%value%]}"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"summon armor_stand ~!x1! ~-1 ~!z1! {Marker:1,NoGravity:1,Tags:[%value%S],Invisible:1}"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"setblock ~!x3! ~-1 ~!z3! minecraft:redstone_lamp"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"tellraw @a [{\"text\":\"\",\"color\":\"gold\",\"bold\":true},{\"text\":\"ON\",\"color\":\"green\",\"bold\":true},{\"text\":\" - \"},{\"text\":\"OFF\",\"color\":\"red\",\"bold\":true},{\"text\":\" signs for vanilla Minecraft %version%\",\"color\":\"gold\",\"bold\":true},{\"text\":\"\\n Generated by the \\\"ON-OFF signs generator 2.0\\\"\\n Get downloads and video tutorial on this \",\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"link\",\"bold\":false,\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://www.youtube.com\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"https://www.youtube.com\"}},{\"text\":\"\\n For help/infos and more: \",\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"\\u25BA\\u25BA\\u25BA dadib.official@gmail.com \\u25C4\\u25C4\\u25C4\",\"bold\":false}]]"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"scoreboard players set @e[tag=%value%] %value% 0"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"data merge block ~ ~-2 ~ {
+											Command:\"fill ~ ~ ~ ~ ~2 ~ air\"
+											}"
+										},
+										{
+											id:command_block_minecart,Tags:[%value%],Command:"kill @e[tag=%value%,type=command_block_minecart]"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

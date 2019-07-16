@@ -1,0 +1,118 @@
+summon falling_block ~%x0% ~.1 ~%z0% {
+	TileID:152,
+	Time:1,
+	Passengers:[
+		{
+			id:falling_block,
+			TileID:157,
+			Time:1,
+			Passengers:[
+				%pass%gamerule commandBlockOutput false",
+				Tags:[%value%%value%]
+				},
+				%pass%scoreboard objectives add %value% dummy",
+				Tags:[%value%%value%]
+				},
+				%pass%blockdata ~%x1% ~ ~%z1% {
+					Text1:\"{
+						\\\"text\\\":\\\"%line1:\=\\\\%\\\",
+						\\\"clickEvent\\\":{
+							\\\"action\\\":\\\"run_command\\\",
+							\\\"value\\\":\\\"execute @e[tag=%value%,score_%value%_min=1] ~ ~ ~ blockdata ~%x2% ~1 ~%z2% {
+								\\\\\\\"Text3\\\\\\\":\\\\\\\"{
+									\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+									\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+										\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%,score_%value%_min=1] %value% 0\\\\\\\\\\\\\\\"
+									}
+								}\\\\\\\",
+								\\\\\\\"Text4\\\\\\\":\\\\\\\"[
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false,
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[tag=%value%] ~ ~ ~ setblock ~ ~1 ~ stone\\\\\\\\\\\\\\\"
+										}
+									},
+									{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true
+									}
+								]\\\\\\\"
+							}\\\"
+						}
+					}\",
+					Text2:\"{
+						\\\"text\\\":\\\"%line2:\=\\\\%\\\",
+						\\\"clickEvent\\\":{
+							\\\"action\\\":\\\"run_command\\\",
+							\\\"value\\\":\\\"execute @e[tag=%value%,score_%value%=0] ~ ~ ~ blockdata ~%x2% ~1 ~%z2% {
+								\\\\\\\"Text3\\\\\\\":\\\\\\\"{
+									\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+									\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+										\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[tag=%value%,score_%value%=0] %value% 1\\\\\\\\\\\\\\\"
+									}
+								}\\\\\\\",
+								\\\\\\\"Text4\\\\\\\":\\\\\\\"[
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true,
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[tag=%value%] ~ ~ ~ setblock ~ ~1 ~ redstone_block\\\\\\\\\\\\\\\"
+										}
+									},
+									{\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"red\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false
+									}
+								]\\\\\\\"
+							}\\\"
+						}
+					}\",
+					Text4:\"[
+						{
+							\\\"text\\\":\\\"[ON]\\\",
+							\\\"color\\\":\\\"green\\\",
+							\\\"bold\\\":false
+						},
+						{\\\"text\\\":\\\"       \\\"},
+						{
+							\\\"text\\\":\\\"[OFF]\\\",
+							\\\"color\\\":\\\"red\\\",
+							\\\"bold\\\":true
+						}
+					]\"
+				}",
+				Tags:[%value%%value%]
+				},
+				%pass%summon minecraft:armor_stand ~%x3% ~-1 ~%z3% {Marker:1,NoGravity:1,Tags:[%value%]}",
+				Tags:[%value%%value%]
+				},
+				%pass%setblock ~%x4% ~ ~%z4% minecraft:redstone_lamp",
+				Tags:[%value%%value%]
+				},
+				%pass%scoreboard players set @e[tag=%value%] %value% 0",Tags:[%value%%value%]
+				},
+				%pass%summon minecraft:falling_block ~%x5% ~ ~%z5% {
+						TileID:137,Time:1,TileEntityData:{
+							Command:\"fill ~ ~ ~ ~%x6% ~1 ~%z6% minecraft:air\",auto:1
+						}
+					}",
+				Tags:[%value%%value%]
+				},
+				%pass%kill @e[tag=%value%%value%]",
+				Tags:[%value%%value%]
+				}
+			]
+		}
+	]
+}

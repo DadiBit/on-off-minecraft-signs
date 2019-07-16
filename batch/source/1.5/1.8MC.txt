@@ -1,0 +1,105 @@
+summon MinecartCommandBlock ~%x0% ~2 ~%z0% {
+	Command:"kill @e[type=MinecartCommandBlock,r=1]",
+	Riding:{
+		id:MinecartCommandBlock,
+		Command:"summon FallingSand ~%x5% ~ ~%z5% {TileID:152,Time:1,Riding:{id:FallingSand,TileID:137,Time:1,TileEntityData:{Command:\"fill ~ ~ ~ ~%x6% ~1 ~%z6% minecraft:air\"}}}",
+		Riding:{
+			id:MinecartCommandBlock,
+			Command:"scoreboard players set @e[type=ArmorStand,name=%value%] %value% 0",
+			Riding:{
+				id:MinecartCommandBlock,
+				Command:"summon ArmorStand ~%x3% ~-1 ~%z3% {NoGravity:1,CustomName:%value%}",
+				Riding:{
+					id:MinecartCommandBlock,
+					Command:"blockdata ~%x1% ~ ~%z1% {
+						Text1:\"{
+							\\\"text\\\":\\\"%line1:\=\\\\%\\\",
+							\\\"clickEvent\\\":{
+								\\\"action\\\":\\\"run_command\\\",
+								\\\"value\\\":\\\"execute @e[name=%value%,score_%value%_min=1] ~ ~ ~ blockdata ~%x2% ~1 ~%z2% {
+									Text3:\\\\\\\"{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[score_%value%_min=1] %value% 0\\\\\\\\\\\\\\\"
+										}
+									}\\\\\\\",
+									Text4:\\\\\\\"[
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false,
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[score_%value%=0] ~ ~ ~ setblock ~ ~1 ~ minecraft:stone\\\\\\\\\\\\\\\"
+										}
+									},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"
+									},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"dark_red\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true
+									}
+									]\\\\\\\"
+								}\\\"
+							}
+						}\",
+						Text2:\"{
+							\\\"text\\\":\\\"%line2:\=\\\\%\\\",
+							\\\"clickEvent\\\":{
+								\\\"action\\\":\\\"run_command\\\",
+								\\\"value\\\":\\\"execute @e[name=%value%,score_%value%=0] ~ ~ ~ blockdata ~%x2% ~1 ~%z2% {
+									Text3:\\\\\\\"{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"scoreboard players set @e[score_%value%=0] %value% 1\\\\\\\\\\\\\\\"
+										}
+									}\\\\\\\",
+									Text4:\\\\\\\"[
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[ON]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"green\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":true,
+										\\\\\\\\\\\\\\\"clickEvent\\\\\\\\\\\\\\\":{
+											\\\\\\\\\\\\\\\"action\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"run_command\\\\\\\\\\\\\\\",
+											\\\\\\\\\\\\\\\"value\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"execute @e[score_%value%_min=1] ~ ~ ~ setblock ~ ~1 ~ minecraft:redstone_block\\\\\\\\\\\\\\\"
+										}
+									},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"       \\\\\\\\\\\\\\\"
+									},
+									{
+										\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"[OFF]\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"dark_red\\\\\\\\\\\\\\\",
+										\\\\\\\\\\\\\\\"bold\\\\\\\\\\\\\\\":false
+									}
+									]\\\\\\\"
+								}\\\"
+							}
+						}\"
+					}",
+					Riding:{
+						id:MinecartCommandBlock,
+						Command:"scoreboard objectives add %value% dummy",
+						Riding:{
+							id:MinecartCommandBlock,
+							Command:"gamerule commandBlockOutput false",
+							Riding:{
+								id:MinecartCommandBlock,
+								Command:"setblock ~%x4% ~ ~%z4% minecraft:redstone_lamp",
+								Riding:{
+									id:FallingSand,
+									TileID:157,
+									Time:1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
